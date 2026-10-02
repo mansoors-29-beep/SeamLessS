@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seamless Solutions | SaaS Dashboard</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<aside class="sidebar">
+    <div class="brand">
+        <div class="logo">S</div>
+        <div><h2>Seamless</h2><span>Solutions</span></div>
+    </div>
+
+    <div class="nav-title">WORKSPACE</div>
+    <nav>
+        <a href="#home" class="nav-link active" data-page="home">⌂ <span>Home</span></a>
+        <a href="#workflow" class="nav-link" data-page="workflow">✦ <span>Agent Workflow</span></a>
+        <a href="#aichat" class="nav-link" data-page="aichat">✦ <span>AI Chat</span></a>
+        <a href="#sales" class="nav-link" data-page="sales">▣ <span>Sales Analytics</span></a>
+        <a href="#analytics" class="nav-link" data-page="analytics">◈ <span>Analytics</span></a>
+        <a href="#customers" class="nav-link" data-page="customers">◎ <span>Customers</span></a>
+        <a href="#settings" class="nav-link" data-page="settings">⚙ <span>Settings</span></a>
+    </nav>
+
+    <div class="team-title">TEAM MEMBERS</div>
+    <div class="team-list">
+        <div class="team-member"><span class="team-avatar a1">M</span><div><b>Mansoor</b><small>Admin</small></div><i></i></div>
+        <div class="team-member"><span class="team-avatar a2">V</span><div><b>Vijayanand</b><small>Developer</small></div><i></i></div>
+        <div class="team-member"><span class="team-avatar a3">K</span><div><b>Kiran</b><small>Designer</small></div><i></i></div>
+        <div class="team-member"><span class="team-avatar a4">A</span><div><b>Azeez</b><small>Analyst</small></div><i></i></div>
+    </div>
+
+    <div class="sidebar-bottom">
+        <button class="mini-profile" type="button" onclick="openTeamProfile()" aria-label="Open Seamless Team profile">
+            <div class="avatar">SM</div>
+            <div><strong>Seamless Team</strong><small>4 members online</small></div>
+            <span class="profile-arrow">›</span>
+        </button>
+    </div>
+</aside>
+
+<main class="main">
+<header class="topbar">
+    <div>
+        <p class="eyebrow">SEAMLESS SOLUTIONS</p>
+        <h1 id="pageTitle">Good afternoon,customers 👋</h1>
+        <p class="muted" id="pageSubtitle">Here's what's happening with your business today.</p>
+    </div>
+    <div class="top-actions"><button class="ai-chat-btn" onclick="openAIChat()">✦ AI Chat</button>
+        <button class="icon-btn notification-btn" onclick="showNotifications()" title="Notifications">⌁<span class="notify-dot"></span></button>
+        <button class="date-btn" onclick="openCalendar()">October 2026 ▾</button>
+    </div>
+</header>
+
+<!-- HOME -->
+<section id="home" class="page active-page">
+    <section class="hero">
+        <div>
+            <span class="hero-badge">● BUSINESS OVERVIEW</span>
+            <h2>Grow smarter with <span>Seamless.</span></h2>
+            <p>Track revenue, customers and business performance from one beautiful workspace.</p>
+            <button class="primary-btn" onclick="navigate('analytics')">View Analytics →</button>
+        </div>
+        <div class="hero-orb"><div class="orb-inner">S</div></div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-card"><span>Total Revenue</span><h2>₹12.8L</h2><p class="positive">↑ 18.6% <small>vs last month</small></p><div class="spark"></div></div>
+        <div class="stat-card"><span>Active Customers</span><h2>1,248</h2><p class="positive">↑ 12.4% <small>vs last month</small></p><div class="spark two"></div></div>
+        <div class="stat-card"><span>New Customers</span><h2>186</h2><p class="positive">↑ 9.8% <small>vs last month</small></p><div class="spark three"></div></div>
+        <div class="stat-card"><span>Monthly Recurring Revenue</span><h2>₹4.2L</h2><p class="positive">↑ 14.2% <small>vs last month</small></p><div class="spark four"></div></div>
+    </section>
+
+    <section class="content-grid">
+        <div class="panel revenue-panel">
+            <div class="panel-head"><div><h3>Revenue Overview</h3><p>Monthly revenue performance</p></div>
+                <select id="periodSelect"><option value="6">Last 6 months</option><option value="4">Last 4 months</option><option value="3">Last 3 months</option></select>
+            </div>
+            <div class="chart-wrap"><canvas id="revenueChart"></canvas></div>
+        </div>
+        <div class="panel">
+            <div class="panel-head"><div><h3>Revenue by Plan</h3><p>Current subscription mix</p></div></div>
+            <div class="plan-list">
+                <div class="plan"><span class="dot starter"></span><div><strong>Starter</strong><small>38% of revenue</small></div><b>₹1.6L</b></div>
+                <div class="plan"><span class="dot pro"></span><div><strong>Pro</strong><small>44% of revenue</small></div><b>₹1.85L</b></div>
+                <div class="plan"><span class="dot enterprise"></span><div><strong>Enterprise</strong><small>18% of revenue</small></div><b>₹75K</b></div>
+            </div>
+            <div class="progress"><span style="width:44%"></span></div>
+            <p class="plan-note">Pro plan contributes the highest revenue.</p>
+        </div>
+    </section>
+
+    <section class="panel activity">
+        <div class="panel-head"><div><h3>Recent Activity</h3><p>Latest updates from your business</p></div><button class="view-btn" onclick="showAllActivity()">View all</button></div>
+        <div class="activity-list">
+            <div class="activity-row"><div class="activity-icon customer">+</div><div><strong>New customer</strong><p>Acme Technologies joined Seamless Solutions</p></div><time>10 min ago</time></div>
+            <div class="activity-row"><div class="activity-icon payment">₹</div><div><strong>Payment received</strong><p>₹48,000 subscription payment received</p></div><time>32 min ago</time></div>
+            <div class="activity-row"><div class="activity-icon subscription">★</div><div><strong>New subscription</strong><p>Pro Plan activated successfully</p></div><time>1 hour ago</time></div>
+            <div class="activity-row"><div class="activity-icon upgrade">↑</div><div><strong>Customer upgrade</strong><p>CloudNova upgraded to Enterprise</p></div><time>2 hours ago</time></div>
+        </div>
+    </section>
+</section>
+
+<!-- ANALYTICS -->
+
+<section id="workflow" class="page">
+  <div class="page-heading">
+    <div><span class="eyebrow">AUTOMATION CENTER</span><h1>Agent Workflow</h1><p>Design, monitor and run intelligent business workflows from one workspace.</p></div>
+    <button class="primary-btn" onclick="runWorkflow()">▶ Run Workflow</button>
+  </div>
+  <section class="workflow-hero">
+    <div><div class="workflow-status"><span></span> AGENTS OPERATIONAL</div><h2>Build smarter workflows with <strong>Seamless AI</strong></h2><p>Connect triggers, AI agents and actions into a powerful automated pipeline.</p></div>
+    <div class="workflow-orb"><div class="workflow-orb-ring"></div><span>✦</span></div>
+  </section>
+  <section class="workflow-stats">
+    <div class="workflow-stat"><span>Active Workflows</span><b>12</b><small>↑ 3 this month</small></div>
+    <div class="workflow-stat"><span>Tasks Automated</span><b>8,492</b><small>↑ 24.8%</small></div>
+    <div class="workflow-stat"><span>Success Rate</span><b>98.7%</b><small>Last 30 days</small></div>
+    <div class="workflow-stat"><span>Time Saved</span><b>186h</b><small>This month</small></div>
+  </section>
+  <div class="workflow-layout">
+    <div class="panel workflow-builder">
+      <div class="panel-head"><div><h3>Workflow Builder</h3><p>Customer onboarding automation</p></div><span class="live-pill">LIVE</span></div>
+      <div class="flow-canvas">
+        <div class="flow-node"><div class="flow-icon">⚡</div><div><small>TRIGGER</small><strong>New Customer</strong><span>When a customer signs up</span></div><i></i></div>
+        <div class="flow-line"><span></span></div>
+        <div class="flow-node"><div class="flow-icon">✦</div><div><small>AI AGENT</small><strong>Welcome Agent</strong><span>Personalize onboarding message</span></div><i></i></div>
+        <div class="flow-line"><span></span></div>
+        <div class="flow-node"><div class="flow-icon">↗</div><div><small>ACTION</small><strong>Send Email</strong><span>Deliver welcome sequence</span></div><i></i></div>
+        <div class="flow-line"><span></span></div>
+        <div class="flow-node"><div class="flow-icon">✓</div><div><small>ACTION</small><strong>Update CRM</strong><span>Create customer profile</span></div></div>
+      </div>
+    </div>
+    <div class="panel agents-panel">
+      <div class="panel-head"><div><h3>AI Agents</h3><p>4 intelligent workers</p></div><button class="icon-btn" onclick="openAgentDetails()">＋</button></div>
+      <div class="agent-list">
+        <button class="agent-card" onclick="openAgentDetails('Onboarding Agent')"><span class="agent-avatar">✦</span><div><b>Onboarding Agent</b><small>Customer success</small></div><em>Running</em></button>
+        <button class="agent-card" onclick="openAgentDetails('Revenue Agent')"><span class="agent-avatar purple">₹</span><div><b>Revenue Agent</b><small>Sales intelligence</small></div><em>Running</em></button>
+        <button class="agent-card" onclick="openAgentDetails('Support Agent')"><span class="agent-avatar blue">?</span><div><b>Support Agent</b><small>Ticket automation</small></div><em>Running</em></button>
+        <button class="agent-card" onclick="openAgentDetails('Analytics Agent')"><span class="agent-avatar orange">◈</span><div><b>Analytics Agent</b><small>Business insights</small></div><em>Idle</em></button>
+      </div>
+    </div>
+  </div>
+  <div class="panel workflow-runs">
+    <div class="panel-head"><div><h3>Recent Workflow Runs</h3><p>Latest automation activity</p></div><button class="text-btn" onclick="openWorkflowRuns()">View all →</button></div>
+    <div class="run-list">
+      <div class="run-row"><span class="run-check">✓</span><div><b>Customer Onboarding</b><small>Acme Technologies · 4 steps completed</small></div><strong>Completed</strong><time>2 min ago</time></div>
+      <div class="run-row"><span class="run-check">✓</span><div><b>Revenue Follow-up</b><small>CloudNova · 3 steps completed</small></div><strong>Completed</strong><time>18 min ago</time></div>
+      <div class="run-row"><span class="run-pulse">●</span><div><b>Support Resolution</b><small>TechFlow · Agent processing</small></div><strong class="processing">Processing</strong><time>Now</time></div>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="aichat" class="page">
+  <div class="ai-page-heading">
+    <div>
+      <span class="eyebrow">SEAMLESS INTELLIGENCE</span>
+      <h1>AI Chat</h1>
+      <p>Your intelligent workspace assistant for sales, revenue, customers and workflows.</p>
+    </div>
+    <div class="ai-status-pill"><span></span> AI ONLINE</div>
+  </div>
+
+  <div class="ai-workspace">
+    <aside class="ai-history">
+      <div class="ai-history-head">
+        <div><b>Conversations</b><small>Recent chats</small></div>
+        <button onclick="newAIChat()">＋</button>
+      </div>
+      <div class="ai-search"><span>⌕</span><input placeholder="Search chats"></div>
+      <div class="chat-history-item active">
+        <span class="history-icon">✦</span>
+        <div><b>Business Overview</b><small>Today · 4 messages</small></div>
+      </div>
+      <div class="chat-history-item">
+        <span class="history-icon purple">₹</span>
+        <div><b>Revenue Analysis</b><small>Yesterday · 8 messages</small></div>
+      </div>
+      <div class="chat-history-item">
+        <span class="history-icon blue">◈</span>
+        <div><b>Customer Insights</b><small>Sep 29 · 6 messages</small></div>
+      </div>
+      <div class="chat-history-item">
+        <span class="history-icon orange">⚡</span>
+        <div><b>Workflow Ideas</b><small>Sep 27 · 5 messages</small></div>
+      </div>
+    </aside>
+
+    <div class="ai-chat-page-main">
+      <div class="ai-chat-page-top">
+        <div class="ai-agent-title">
+          <div class="ai-page-logo">✦</div>
+          <div><b>Seamless AI</b><small>Business Intelligence Agent · Ready to help</small></div>
+        </div>
+        <button class="clear-chat-btn" onclick="clearAIPageChat()">Clear chat</button>
+      </div>
+
+      <div class="ai-page-messages" id="aiPageMessages">
+        <div class="ai-page-message ai">
+          <div class="message-avatar">✦</div>
+          <div class="message-content">
+            <b>Seamless AI</b>
+            <p>Hi Mansoor 👋 I'm your business intelligence assistant. Ask me about sales, revenue, customers, analytics or Agent Workflow.</p>
+          </div>
+        </div>
+
+        <div class="ai-page-welcome">
+          <h2>What can I help you with?</h2>
+          <div class="ai-prompt-grid">
+            <button onclick="askAIPage('Give me a sales summary')"><span>▣</span><b>Sales summary</b><small>Pipeline and conversion</small></button>
+            <button onclick="askAIPage('Show revenue insights')"><span>₹</span><b>Revenue insights</b><small>Growth and performance</small></button>
+            <button onclick="askAIPage('Which customers need attention?')"><span>◎</span><b>Customer insights</b><small>Retention and activity</small></button>
+            <button onclick="askAIPage('Give me workflow insights')"><span>✦</span><b>Workflow insights</b><small>Automation performance</small></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-page-input-wrap">
+        <div class="ai-page-input">
+          <input id="aiPageInput" placeholder="Ask Seamless AI anything..." onkeydown="if(event.key==='Enter')sendAIPageMessage()">
+          <button onclick="sendAIPageMessage()">↑</button>
+        </div>
+        <small>Seamless AI can analyze your dashboard data and business metrics.</small>
+      </div>
+    </div>
+
+    <aside class="ai-insights-side">
+      <div class="side-title"><b>AI Insights</b><span>LIVE</span></div>
+      <div class="ai-insight-card"><span>↗</span><div><b>Revenue growth</b><small>Revenue is up 18.6% this month.</small></div></div>
+      <div class="ai-insight-card"><span>⚡</span><div><b>Follow-ups needed</b><small>31 proposals have no recent activity.</small></div></div>
+      <div class="ai-insight-card"><span>◈</span><div><b>Automation health</b><small>98.7% workflow success rate.</small></div></div>
+      <div class="ai-mini-card"><small>ASK AI</small><b>Need a deeper analysis?</b><button onclick="document.getElementById('aiPageInput').focus()">Start asking →</button></div>
+    </aside>
+  </div>
+</section>
+
+<section id="sales" class="page">
+  <div class="page-heading">
+    <div><span class="eyebrow">REVENUE INTELLIGENCE</span><h1>Sales Analytics</h1><p>Understand pipeline performance, revenue trends and conversion activity.</p></div>
+    <button class="primary-btn" onclick="exportSalesReport()">↓ Export Report</button>
+  </div>
+
+  <section class="sales-hero">
+    <div>
+      <div class="sales-live"><span></span> LIVE SALES DATA</div>
+      <h2>Revenue is moving in the <strong>right direction.</strong></h2>
+      <p>Monitor your sales engine with clear, actionable business signals.</p>
+    </div>
+    <div class="sales-score"><small>SALES HEALTH</small><b>92</b><span>/ 100</span><em>Excellent</em></div>
+  </section>
+
+  <section class="sales-kpis">
+    <div class="sales-kpi"><span>Pipeline Value</span><b>₹28.6L</b><small>↑ 21.4%</small></div>
+    <div class="sales-kpi"><span>Won Revenue</span><b>₹12.8L</b><small>↑ 18.6%</small></div>
+    <div class="sales-kpi"><span>Conversion Rate</span><b>24.8%</b><small>↑ 4.2%</small></div>
+    <div class="sales-kpi"><span>Avg. Deal Size</span><b>₹68.4K</b><small>↑ 8.9%</small></div>
+  </section>
+
+  <div class="sales-grid">
+    <div class="panel sales-chart-panel">
+      <div class="panel-head"><div><h3>Revenue Performance</h3><p>Monthly won revenue vs target</p></div><select class="sales-select" id="salesRevenuePeriod" aria-label="Revenue chart period"><option value="6">Last 6 months</option><option value="12">Last 12 months</option></select></div>
+      <div class="sales-chart">
+        <div class="chart-y"><span>₹15L</span><span>₹10L</span><span>₹5L</span><span>₹0</span></div>
+        <div class="bars" id="salesRevenueBars">
+          <div class="bar-group"><i style="height:42%"></i><b>Apr</b></div>
+          <div class="bar-group"><i style="height:55%"></i><b>May</b></div>
+          <div class="bar-group"><i style="height:49%"></i><b>Jun</b></div>
+          <div class="bar-group"><i style="height:68%"></i><b>Jul</b></div>
+          <div class="bar-group"><i style="height:76%"></i><b>Aug</b></div>
+          <div class="bar-group"><i style="height:91%"></i><b>Sep</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel pipeline-panel">
+      <div class="panel-head"><div><h3>Sales Pipeline</h3><p>Current opportunities</p></div></div>
+      <div class="pipeline-step"><span>01</span><div><b>Qualified Leads</b><small>186 opportunities</small></div><strong>₹9.8L</strong></div>
+      <div class="pipeline-step"><span>02</span><div><b>Proposal Sent</b><small>94 opportunities</small></div><strong>₹7.2L</strong></div>
+      <div class="pipeline-step"><span>03</span><div><b>Negotiation</b><small>42 opportunities</small></div><strong>₹5.1L</strong></div>
+      <div class="pipeline-step"><span>04</span><div><b>Closed Won</b><small>28 deals</small></div><strong>₹3.8L</strong></div>
+    </div>
+  </div>
+
+  <div class="sales-bottom">
+    <div class="panel">
+      <div class="panel-head"><div><h3>Top Sales Reps</h3><p>September performance</p></div></div>
+      <div class="rep-row"><span class="rep-avatar">M</span><div><b>Mansoor</b><small>18 closed deals</small></div><div class="rep-progress"><i style="width:94%"></i></div><strong>₹4.2L</strong></div>
+      <div class="rep-row"><span class="rep-avatar">V</span><div><b>VijayAnand</b><small>15 closed deals</small></div><div class="rep-progress"><i style="width:81%"></i></div><strong>₹3.6L</strong></div>
+      <div class="rep-row"><span class="rep-avatar">K</span><div><b>Kran</b><small>12 closed deals</small></div><div class="rep-progress"><i style="width:68%"></i></div><strong>₹2.9L</strong></div>
+      <div class="rep-row"><span class="rep-avatar">A</span><div><b>Azeez</b><small>9 closed deals</small></div><div class="rep-progress"><i style="width:53%"></i></div><strong>₹2.1L</strong></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><div><h3>Sales Insights</h3><p>AI-generated business signals</p></div><button class="text-btn" onclick="openAIChat()">Ask AI →</button></div>
+      <div class="insight"><span>↗</span><div><b>Enterprise deals are growing</b><small>Enterprise revenue is up 27% this month.</small></div></div>
+      <div class="insight"><span>◈</span><div><b>Best conversion channel</b><small>Referrals are converting 1.8× faster.</small></div></div>
+      <div class="insight"><span>⚡</span><div><b>Follow-up opportunity</b><small>31 proposals have had no activity for 3+ days.</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="analytics" class="page">
+    <div class="section-title"><div><span class="hero-badge">PERFORMANCE</span><h2>Analytics</h2><p>Understand your growth with real-time business insights.</p></div></div>
+    <div class="analytics-grid">
+        <div class="analytics-card big"><span>Revenue Growth</span><strong>+18.6%</strong><p>Compared with previous month</p><div class="mini-bars"><i style="height:40%"></i><i style="height:55%"></i><i style="height:48%"></i><i style="height:67%"></i><i style="height:72%"></i><i style="height:90%"></i></div></div>
+        <div class="analytics-card"><span>Conversion Rate</span><strong>7.8%</strong><p class="positive">↑ 1.2%</p></div>
+        <div class="analytics-card"><span>Customer Retention</span><strong>94.2%</strong><p class="positive">↑ 2.8%</p></div>
+    </div>
+    <div class="panel analytics-chart"><div class="panel-head"><div><h3>Business Performance</h3><p>Monthly performance indicators</p></div></div><canvas id="analyticsChart"></canvas></div>
+</section>
+
+<!-- CUSTOMERS -->
+<section id="customers" class="page">
+    <div class="section-title"><div><span class="hero-badge">CUSTOMER HUB</span><h2>Customers</h2><p>Manage your growing customer community.</p></div><button class="primary-btn" onclick="openAddCustomer()">+ Add Customer</button></div>
+    <div class="customer-stats"><div><span>Total</span><b>1,248</b></div><div><span>Active</span><b>1,103</b></div><div><span>New this month</span><b>186</b></div><div><span>Churned</span><b>31</b></div></div>
+    <div class="panel customer-table">
+        <div class="table-head"><h3>Customer Directory</h3><input id="searchCustomer" oninput="filterCustomers()" placeholder="Search customers..."></div>
+        <table><thead><tr><th>Customer</th><th>Plan</th><th>Status</th><th>Revenue</th><th>Joined</th></tr></thead>
+        <tbody id="customerBody">
+            <tr><td><b>Acme Technologies</b><small>acme@company.com</small></td><td>Enterprise</td><td><em class="status active">Active</em></td><td>₹82,000</td><td>Sep 28</td></tr>
+            <tr><td><b>CloudNova</b><small>hello@cloudnova.io</small></td><td>Pro</td><td><em class="status active">Active</em></td><td>₹48,000</td><td>Sep 25</td></tr>
+            <tr><td><b>TechFlow</b><small>team@techflow.dev</small></td><td>Starter</td><td><em class="status active">Active</em></td><td>₹22,000</td><td>Sep 21</td></tr>
+            <tr><td><b>PixelWorks</b><small>hi@pixelworks.co</small></td><td>Pro</td><td><em class="status pending">Pending</em></td><td>₹35,000</td><td>Sep 18</td></tr>
+            <tr><td><b>BrightLabs</b><small>hello@brightlabs.com</small></td><td>Enterprise</td><td><em class="status active">Active</em></td><td>₹95,000</td><td>Sep 12</td></tr>
+        </tbody></table>
+    </div>
+</section>
+
+<!-- SETTINGS -->
+<section id="settings" class="page">
+    <div class="section-title"><div><span class="hero-badge">WORKSPACE</span><h2>Settings</h2><p>Customize your Seamless Solutions workspace.</p></div></div>
+    <div class="settings-grid">
+        <div class="panel settings-menu">
+            <button class="setting-tab active" onclick="showSettingTab('general',this)">General</button>
+            <button class="setting-tab" onclick="showSettingTab('notifications',this)">Notifications</button>
+            <button class="setting-tab" onclick="showSettingTab('security',this)">Security</button>
+            <button class="setting-tab" onclick="showSettingTab('billing',this)">Billing</button>
+        </div>
+        <div class="panel settings-form">
+            <h3>Company Information</h3><p>Update your organization details.</p>
+            <label>Company name<input value="Seamless Solutions"></label>
+            <label>Workspace email<input value="team@seamlesssolutions.com"></label>
+            <label>Industry<select><option>SaaS & Technology</option><option>Finance</option><option>Education</option></select></label>
+            <button class="primary-btn" onclick="saveSettings()">Save Changes</button>
+            <span id="saveMessage"></span>
+        </div>
+    </div>
+</section>
+</main>
+
+<div id="modalOverlay" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeModal()">×</button>
+        <div id="modalContent"></div>
+    </div>
+</div>
+<script src="js/script.js"></script>
+</body>
+</html>
